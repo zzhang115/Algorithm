@@ -4,7 +4,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		test1_3.searchInRotatedArray(0);
+		test1_3.searchInRotatedArray(6);
 	}
 }
 class test1_1
@@ -53,7 +53,7 @@ class test1_2
 class test1_3
 {
 	static int x;
-	static int array[]={6,7,8,9,10,11,2,3,4};//{6,7,8,0,1,2,3,4,5};//{4,5,6,7,0,0,1,1,2,4,4};
+	static int array[]={6,7,8,9,10,11,12,13,1,2,3,4,5,6};//{6,7,8,9,10,11,2,3,4};{4,5,6,7,0,0,1,1,2,4,4};
 	public static void searchInRotatedArray(int x)
 	{
 		test1_3.x=x;
@@ -76,20 +76,51 @@ class test1_3
 		int mid = (start + end)/2;
 		if(array[start] <= array[mid])
 		{
-			if(array[start]<=x || x <= array[mid])
+			if(array[start]<=x && x <= array[mid])
 				result=binarySearch(start, mid);
 			if(array[mid+1] <= x || x <= array[end])
 				result=binarySearch(mid+1, end);
 		}
 		else if(array[mid] <= array[end])
 		{
-			if(array[mid] <= x || x <= array[end])
+			if(array[mid] <= x && x <= array[end])
 				result=binarySearch(mid, end);
 			if(array[start]<=x || x <= array[mid-1])
 				result=binarySearch(start, mid-1);
 		}
 		return result;
 	}
+//	public static int binarySearch(int start, int end)
+//	{
+//		int result=-1;
+//		s.sop(start+" "+end);
+//		if(start == end)
+//		{
+//			if(x==array[start])
+//			{
+//				s.sop("index= "+start);
+//				return start;	//from here return value will not finish this whole method directly, it just return to last recurrence
+//			}
+//			else 
+//				return -1;
+//		}
+//		int mid = (start + end)/2;
+//		if(array[start] <= array[mid])
+//		{
+//			if(array[start]<=x || x <= array[mid])
+//				result=binarySearch(start, mid);
+//			if(array[mid+1] <= x || x <= array[end])
+//				result=binarySearch(mid+1, end);
+//		}
+//		else if(array[mid] <= array[end])
+//		{
+//			if(array[mid] <= x || x <= array[end])
+//				result=binarySearch(mid, end);
+//			if(array[start]<=x || x <= array[mid-1])
+//				result=binarySearch(start, mid-1);
+//		}
+//		return result;
+//	}
 }
 
 

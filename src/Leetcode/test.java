@@ -49,7 +49,7 @@ class test1_2
 			s.sop(array[j]);
 		s.sop("length="+(++i));
 	}
-}
+}//
 class test1_3
 {
 	static int x;

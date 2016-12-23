@@ -129,6 +129,13 @@ class test1_4
 		return result;
 	}
 }
+class test1_5
+{
+	public static void getMedianofTwoArray()
+	{
+		
+	}
+}
 
 class s
 {

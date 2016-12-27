@@ -4,7 +4,8 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		test1_4.searchInRotatedArray(6);
+		new Solution();
+//		test1_5.getMedianofTwoArray();
 	}
 }
 class test1_1
@@ -90,6 +91,7 @@ class test1_3 //for array has no duplicate element
 }
 class test1_4
 {
+//	test1_4.searchInRotatedArray(6);
 	static int x;
 	static int array[]={6,7,8,9,10,11,12,13,1,2,3,4,5,6};//{6,7,8,9,10,11,2,3,4};{4,5,6,7,0,0,1,1,2,4,4};
 	public static void searchInRotatedArray(int x)
@@ -133,10 +135,132 @@ class test1_5
 {
 	public static void getMedianofTwoArray()
 	{
-		
+//		int arrayA[]={1,2,3,4,5,6,7};
+//		int arrayB[]={2,4,6,8,10,12,14};
+		int arrayA[]={6,9,15,20,30};
+		int arrayB[]={5,7,12,17,21};
+		Array A=new Array(0, arrayA.length-1, arrayA);//static method cannot visit  dynamic class
+		Array B=new Array(0, arrayB.length-1, arrayB);
+		while(A.getMedian()!=B.getMedian())
+		{
+			s.sop("A: "+A.getMedian()+" B: "+B.getMedian());
+			if(A.getMedian()<B.getMedian())
+			{
+				A.startIndex=A.medianIndex;
+				B.endIndex=B.medianIndex;
+			}
+			else
+			{
+				B.startIndex=B.medianIndex;
+				A.endIndex=A.medianIndex;
+			}
+		}
+		s.sop(A.getMedian());
+		s.sop(B.getMedian());
+	}
+	private static class Array
+	{
+		public int startIndex;
+		public int endIndex;
+		public int medianIndex;
+		public int median;
+		public int array[];
+		public Array(int startIndex, int endIndex, int array[])
+		{
+			this.startIndex=startIndex;
+			this.endIndex=endIndex;
+			this.array=array;
+		}
+		public int getMedian()
+		{
+			if((startIndex+endIndex)%2==1)
+				median=(array[(startIndex+endIndex)/2]+array[(startIndex+endIndex)/2+1])/2;
+			else
+				median=array[(startIndex+endIndex)/2];
+			medianIndex=(startIndex+endIndex)/2;
+			return median;
+		}
 	}
 }
+class Solution {
+	public Solution()
+	{
+		int arrayA[]={6,9,15,20,30};
+		int arrayB[]={5,7};
+		s.sop(findMedianSortedArrays(arrayA, arrayB));
+	}
 
+	   public double findMedianSortedArrays(int A[], int B[]) { 
+
+	       int lena=A.length; 
+
+	       int lenb=B.length; 
+
+	       int len=lena+lenb; 
+
+	       if(len%2==0){ 
+
+	       return  (findMedianCore(A,B,0,lena-1,0,lenb-1,len/2)+ 
+
+	         findMedianCore(A,B,0,lena-1,0,lenb-1,len/2+1))/2; 
+
+	       }else{ 
+
+	        return findMedianCore(A,B,0,lena-1,0,lenb-1,len/2+1); 
+
+	       } 
+
+	          
+
+	    } 
+
+	 public double findMedianCore(int[] A,int[] B,int astart,int aend,int bstart,int bend,int k){ 
+
+	  int lena=aend-astart+1; 
+
+	  int lenb=bend-bstart+1; 
+
+	// the length of a is always smaller than the length of b 
+
+	  if(lena>lenb){ 
+
+	   return findMedianCore(B,A,bstart,bend,astart,aend,k); 
+
+	  } 
+
+	  if(lena<=0){ 
+
+	   return B[bstart+k-1]; 
+
+	  } 
+
+	  if(k==1){ 
+
+	   return A[astart]>B[bstart]?B[bstart]:A[astart]; 
+
+	  } 
+
+	  int pa=k/2>lena?lena:k/2; 
+
+	  int pb=k-pa; 
+
+	  if(A[astart+pa-1]==B[bstart+pb-1]){ 
+
+	   return A[astart+pa-1]; 
+
+	  }else if(A[astart+pa-1]>B[bstart+pb-1]){ 
+
+	   return findMedianCore(A,B,astart,aend,bstart+pb,bend,k-pb); 
+
+	  }else{ 
+
+	   return findMedianCore(A,B,astart+pa,aend,bstart,bend,k-pa); 
+
+	  } 
+
+	 } 
+
+	} 
 class s
 {
 	public static void sop(Object o)
@@ -144,4 +268,3 @@ class s
 		System.out.println(o);
 	}
 }
-

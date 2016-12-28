@@ -185,82 +185,70 @@ class test1_5
 class Solution {
 	public Solution()
 	{
-		int arrayA[]={6,9,15,20,30};
-		int arrayB[]={5,7};
+//		int arrayA[]={6,9,15,20,30};
+//		int arrayB[]={5,7};
+		int arrayA[]={6,9,15,20,21,30};
+		int arrayB[]={5,7,8,10,11};
 		s.sop(findMedianSortedArrays(arrayA, arrayB));
 	}
 
-	   public double findMedianSortedArrays(int A[], int B[]) { 
-
-	       int lena=A.length; 
-
-	       int lenb=B.length; 
-
-	       int len=lena+lenb; 
-
-	       if(len%2==0){ 
-
-	       return  (findMedianCore(A,B,0,lena-1,0,lenb-1,len/2)+ 
-
-	         findMedianCore(A,B,0,lena-1,0,lenb-1,len/2+1))/2; 
-
-	       }else{ 
-
-	        return findMedianCore(A,B,0,lena-1,0,lenb-1,len/2+1); 
-
-	       } 
-
-	          
-
-	    } 
-
-	 public double findMedianCore(int[] A,int[] B,int astart,int aend,int bstart,int bend,int k){ 
-
+    public double findMedianSortedArrays(int A[], int B[]) 
+    {  
+       int lena=A.length; 
+       int lenb=B.length; 
+       int len=lena+lenb; 
+       if(len%2==0)
+       { 
+       return  (findMedianCore(A,B,0,lena-1,0,lenb-1,len/2)+ 
+         findMedianCore(A,B,0,lena-1,0,lenb-1,len/2+1))/2; 
+       }else
+       { 
+        return findMedianCore(A,B,0,lena-1,0,lenb-1,len/2+1); 
+       } 
+    } 
+	public double findMedianCore(int[] A,int[] B,int astart,int aend,int bstart,int bend,int k)
+	{ 
+	  s.sop("***************");
 	  int lena=aend-astart+1; 
-
 	  int lenb=bend-bstart+1; 
-
+	  s.sop("k="+k);
+	  s.sop("lena="+lena);
+	  s.sop("lenb="+lenb);
 	// the length of a is always smaller than the length of b 
-
-	  if(lena>lenb){ 
-
-	   return findMedianCore(B,A,bstart,bend,astart,aend,k); 
-
+	  if(lena>lenb)
+	  { 
+		  return findMedianCore(B,A,bstart,bend,astart,aend,k); 
 	  } 
-
-	  if(lena<=0){ 
-
-	   return B[bstart+k-1]; 
-
+	  if(lena<=0)
+	  { 
+		  return B[bstart+k-1]; 
 	  } 
-
-	  if(k==1){ 
-
-	   return A[astart]>B[bstart]?B[bstart]:A[astart]; 
-
+	  if(k==1)
+	  { 
+		  return A[astart]>B[bstart]?B[bstart]:A[astart]; 
 	  } 
-
 	  int pa=k/2>lena?lena:k/2; 
-
-	  int pb=k-pa; 
-
-	  if(A[astart+pa-1]==B[bstart+pb-1]){ 
-
-	   return A[astart+pa-1]; 
-
-	  }else if(A[astart+pa-1]>B[bstart+pb-1]){ 
-
-	   return findMedianCore(A,B,astart,aend,bstart+pb,bend,k-pb); 
-
-	  }else{ 
-
-	   return findMedianCore(A,B,astart+pa,aend,bstart,bend,k-pa); 
-
+	  int pb=k-pa;
+	  s.sop("pa="+pa);
+	  s.sop("pb="+pb);
+	  s.sop("astart+pa-1="+(astart+pa-1));s.sop("A[astart+pa-1]="+(A[astart+pa-1]));
+	  s.sop("bstart+pb-1="+(bstart+pb-1));s.sop("B[bstart+pb-1]="+(B[bstart+pb-1]));
+	  if(A[astart+pa-1]==B[bstart+pb-1])
+	  { 
+		  return A[astart+pa-1]; 
+	  }
+	  else if(A[astart+pa-1]>B[bstart+pb-1])
+	  { 
+		  s.sop("findMedian>Core("+astart+","+aend+","+(bstart+pb)+","+bend+","+(k-pb)+")");
+		  return findMedianCore(A,B,astart,aend,bstart+pb,bend,k-pb); 
+	  }
+	  else
+	  { 
+		  s.sop("findMedian<Core("+(astart+pa)+","+aend+","+bstart+","+bend+","+(k-pa)+")");
+		  return findMedianCore(A,B,astart+pa,aend,bstart,bend,k-pa); 
 	  } 
-
 	 } 
-
-	} 
+} 
 class s
 {
 	public static void sop(Object o)

@@ -1,9 +1,16 @@
 package Leetcode;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map.Entry;
+
+
 public class test 
 {
 	public static void main(String[] args) 
 	{
+		test1_6.test1_6_newVersion();
 	}
 }
 class test1_1
@@ -42,7 +49,6 @@ class test1_2
 				array[++i]=array[j];
 				index=0;
 			}
-
 		}
 		for(int j=0;j<array.length;j++)
 			s.sop(array[j]);
@@ -320,6 +326,73 @@ class test1_6
 		}
 		s.sop(max);
 	}
+	public static void test1_6_newVersion()
+	{
+		int max=1;
+		int count;
+		int array[]={11,200,195,196,100,198,9,-1,5,7,6,197,199,200,206,205,8,10,3,4,1,201,2,202,203,204};
+//		s.sop(longestConsecutive(array));
+		boolean ifVisited[]=new boolean[array.length];
+		for(int num=0;num<ifVisited.length;num++)
+			ifVisited[num]=false;                   
+		HashSet<Integer> set=new HashSet<Integer>();
+		for(int i=0;i<array.length;i++)
+			set.add(array[i]);
+		Iterator<Integer> iterator= set.iterator();
+		while(iterator.hasNext())
+		{
+			int element=iterator.next();
+			int element2=element;
+			count=1;
+//			set.remove(element);
+			while(set.contains(++element))
+			{
+				count++;
+				set.remove(element);
+				s.sop(count);
+			}
+			while(set.contains(--element2))
+			{
+				count++;
+				set.remove(element2);
+				s.sop(count);
+			}
+			if(count>max)max=count;	
+			iterator=set.iterator();
+		}
+		s.sop(max);
+	}
+    public static int longestConsecutive(int[] num) 
+    { 
+    	if(num==null) return 0; 
+        HashSet<Integer> set=new HashSet<Integer>(); 
+        for(int i=0;i<num.length;i++){ 
+         set.add(num[i]); 
+        } 
+        Iterator<Integer> it=set.iterator(); 
+        int count=0; 
+        int max=0; 
+        while(it.hasNext()){ 
+         int a=it.next(); 
+         count++; 
+//         set.remove(a); 
+         int tem=a; 
+         while(set.contains(++tem)){ 
+          count++; 
+          set.remove(tem); 
+         } 
+         tem=a; 
+         while(set.contains(--tem)){ 
+          count++; 
+          set.remove(tem); 
+         } 
+         if(count>max) 
+          max=count; 
+         count=0; 
+          it=set.iterator(); 
+        } 
+        return max; 
+    }  
 }
 
 class s

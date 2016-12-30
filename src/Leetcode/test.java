@@ -4,8 +4,6 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new Solution();
-//		test1_5.getMedianofTwoArray();
 	}
 }
 class test1_1
@@ -133,6 +131,7 @@ class test1_4
 }
 class test1_5
 {
+//	test1_5.getMedianofTwoArray();
 	public static void getMedianofTwoArray()
 	{
 //		int arrayA[]={1,2,3,4,5,6,7};
@@ -182,13 +181,17 @@ class test1_5
 		}
 	}
 }
-class Solution {
-	public Solution()
+class test1_5_Solution 
+{
+//	new test1_5_Solution();
+	public test1_5_Solution()
 	{
-//		int arrayA[]={6,9,15,20,30};
-//		int arrayB[]={5,7};
-		int arrayA[]={6,9,15,20,21,30};
-		int arrayB[]={5,7,8,10,11};
+		int arrayA[]={6,9,10,15,20,30,31};
+		int arrayB[]={5,40};
+//		int arrayA[]={6,9,15,20,21,30};
+//		int arrayB[]={5,7,8,10,11};
+//		int arrayA[]={2,3,15,16,30,50,51,56};
+//		int arrayB[]={5,7,8,21,25,49,50};
 		s.sop(findMedianSortedArrays(arrayA, arrayB));
 	}
 
@@ -206,17 +209,19 @@ class Solution {
         return findMedianCore(A,B,0,lena-1,0,lenb-1,len/2+1); 
        } 
     } 
+    //findMedianCore this method mainly to find the kth number in this array
 	public double findMedianCore(int[] A,int[] B,int astart,int aend,int bstart,int bend,int k)
 	{ 
 	  s.sop("***************");
 	  int lena=aend-astart+1; 
 	  int lenb=bend-bstart+1; 
+	  s.sop("first("+astart+","+aend+","+bstart+","+bend+","+k+")");
 	  s.sop("k="+k);
 	  s.sop("lena="+lena);
 	  s.sop("lenb="+lenb);
-	// the length of a is always smaller than the length of b 
+	  // the length of a is always smaller than the length of b 
 	  if(lena>lenb)
-	  { 
+	  {    
 		  return findMedianCore(B,A,bstart,bend,astart,aend,k); 
 	  } 
 	  if(lena<=0)
@@ -231,6 +236,8 @@ class Solution {
 	  int pb=k-pa;
 	  s.sop("pa="+pa);
 	  s.sop("pb="+pb);
+	  s.sop("astart="+astart);
+	  s.sop("bstart"+bstart);
 	  s.sop("astart+pa-1="+(astart+pa-1));s.sop("A[astart+pa-1]="+(A[astart+pa-1]));
 	  s.sop("bstart+pb-1="+(bstart+pb-1));s.sop("B[bstart+pb-1]="+(B[bstart+pb-1]));
 	  if(A[astart+pa-1]==B[bstart+pb-1])
@@ -249,6 +256,72 @@ class Solution {
 	  } 
 	 } 
 } 
+class test1_6
+{//		new test1_6();
+	public test1_6()
+	{
+		int max=1;
+		int count,difference=0;
+		boolean ifExist=true;
+		int array[]={11,200,195,196,100,198,9,-1,5,7,6,197,199,200,206,205,8,10,3,4,1,201,2,202,203,204};
+		boolean ifVisited[]=new boolean[array.length];
+		for(int num=0;num<ifVisited.length;num++)
+			ifVisited[num]=false;                        
+		for(int i=0;i<array.length;i++)
+		{
+			if(ifVisited[i])
+				continue;
+			count=1;
+			while(ifExist)
+			{
+				ifExist=false;
+				difference++;
+				for(int j=0;j<array.length;j++)
+				{
+					if(ifVisited[j])
+						continue;
+//					s.sop(array[j]+"now "+array[i]+"+"+difference);
+					if(array[j]==(array[i]+difference))
+					{
+						s.sop("+ "+array[j]);
+						ifExist=true;
+						count++;
+						s.sop(count);
+						ifVisited[j]=true;
+						break;
+					}
+				}
+			}
+			ifExist=true;
+			difference=0;
+			while(ifExist)
+			{
+				ifExist=false;
+				difference--;
+				for(int j=0;j<array.length;j++)
+				{
+					if(ifVisited[j])
+						continue;
+					if(array[j]==(array[i]+difference))
+					{
+						s.sop("- "+array[j]);
+						ifExist=true;
+						count++;
+						s.sop(count);
+						ifVisited[j]=true;
+						break;
+					}
+				}
+			}
+			ifVisited[i]=true;
+			ifExist=true;
+			difference=0;
+			if(count>max)max=count;	
+		}
+		s.sop(max);
+	}
+}
+
 class s
 {
 	public static void sop(Object o)

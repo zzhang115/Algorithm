@@ -344,7 +344,7 @@ class test1_6
 			int element=iterator.next();
 			int element2=element;
 			count=1;
-//			set.remove(element);
+			set.remove(element);// I haven't figure out what reason can lead this iterator struggle with dead circle
 			while(set.contains(++element))
 			{
 				count++;
@@ -358,41 +358,10 @@ class test1_6
 				s.sop(count);
 			}
 			if(count>max)max=count;	
-			iterator=set.iterator();
+			iterator=set.iterator(); // this point must be careful, reset the iterator, must be that
 		}
 		s.sop(max);
 	}
-    public static int longestConsecutive(int[] num) 
-    { 
-    	if(num==null) return 0; 
-        HashSet<Integer> set=new HashSet<Integer>(); 
-        for(int i=0;i<num.length;i++){ 
-         set.add(num[i]); 
-        } 
-        Iterator<Integer> it=set.iterator(); 
-        int count=0; 
-        int max=0; 
-        while(it.hasNext()){ 
-         int a=it.next(); 
-         count++; 
-//         set.remove(a); 
-         int tem=a; 
-         while(set.contains(++tem)){ 
-          count++; 
-          set.remove(tem); 
-         } 
-         tem=a; 
-         while(set.contains(--tem)){ 
-          count++; 
-          set.remove(tem); 
-         } 
-         if(count>max) 
-          max=count; 
-         count=0; 
-          it=set.iterator(); 
-        } 
-        return max; 
-    }  
 }
 
 class s

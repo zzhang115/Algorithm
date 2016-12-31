@@ -1,16 +1,13 @@
 package Leetcode;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map.Entry;
-
 
 public class test 
 {
 	public static void main(String[] args) 
 	{
-		test1_6.test1_6_newVersion();
+		
 	}
 }
 class test1_1
@@ -140,51 +137,42 @@ class test1_5
 //	test1_5.getMedianofTwoArray();
 	public static void getMedianofTwoArray()
 	{
+//		int arrayA[]={6,9,10,15,20,30,31};
+//		int arrayB[]={5,40};
+//		int arrayA[]={6,9,15,20,21,30};
+//		int arrayB[]={5,7,8,10,11};
 //		int arrayA[]={1,2,3,4,5,6,7};
 //		int arrayB[]={2,4,6,8,10,12,14};
 		int arrayA[]={6,9,15,20,30};
 		int arrayB[]={5,7,12,17,21};
-		Array A=new Array(0, arrayA.length-1, arrayA);//static method cannot visit  dynamic class
-		Array B=new Array(0, arrayB.length-1, arrayB);
-		while(A.getMedian()!=B.getMedian())
-		{
-			s.sop("A: "+A.getMedian()+" B: "+B.getMedian());
-			if(A.getMedian()<B.getMedian())
-			{
-				A.startIndex=A.medianIndex;
-				B.endIndex=B.medianIndex;
-			}
-			else
-			{
-				B.startIndex=B.medianIndex;
-				A.endIndex=A.medianIndex;
-			}
-		}
-		s.sop(A.getMedian());
-		s.sop(B.getMedian());
+//		int arrayB[]={5,7,15,20,31};
+//		int arrayA[]={6,9,15,20,30};
+		int len=arrayA.length+arrayB.length;
+		if(len%2==1)
+			s.sop(newsolution(arrayA, arrayB, 0, arrayA.length, 0, arrayB.length, (len/2)+1));
+		else
+			s.sop((newsolution(arrayA, arrayB, 0,arrayA.length, 0, arrayB.length, (len/2))+newsolution(arrayA, arrayB, 0,arrayA.length, 0, arrayB.length, (len/2)+1))/2);
 	}
-	private static class Array
+	public static double newsolution(int arrayA[], int arrayB[], int astart, int aend, int bstart, int bend, int k)
 	{
-		public int startIndex;
-		public int endIndex;
-		public int medianIndex;
-		public int median;
-		public int array[];
-		public Array(int startIndex, int endIndex, int array[])
-		{
-			this.startIndex=startIndex;
-			this.endIndex=endIndex;
-			this.array=array;
-		}
-		public int getMedian()
-		{
-			if((startIndex+endIndex)%2==1)
-				median=(array[(startIndex+endIndex)/2]+array[(startIndex+endIndex)/2+1])/2;
-			else
-				median=array[(startIndex+endIndex)/2];
-			medianIndex=(startIndex+endIndex)/2;
-			return median;
-		}
+//		s.sop("first("+astart+","+aend+","+bstart+","+bend+","+k+")");
+		int lena=(aend-astart)+1;
+		int lenb=(bend-bstart)+1;
+		if(lena>lenb)
+			return newsolution(arrayB, arrayA, bstart, bend, astart,aend, k);
+		if(lena<=0)
+			return arrayB[k-1];
+		if(k==1)
+			return arrayA[astart]>arrayB[bstart]? arrayB[bstart] : arrayA[astart];
+		
+		int pa=k/2>lena? lena : k/2;
+		int pb=k-pa;
+		if(arrayA[astart+pa-1]==arrayB[bstart+pb-1])
+			return arrayA[astart+pa-1];
+		if(arrayA[astart+pa-1]>arrayB[bstart+pb-1])
+			return newsolution(arrayA, arrayB, astart, aend, bstart+pb, bend, k-pb);
+		else
+			return newsolution(arrayA, arrayB, astart+pa, aend, bstart, bend, k-pa);
 	}
 }
 class test1_5_Solution 
@@ -326,6 +314,7 @@ class test1_6
 		}
 		s.sop(max);
 	}
+//	test1_6.test1_6_newVersion();
 	public static void test1_6_newVersion()
 	{
 		int max=1;

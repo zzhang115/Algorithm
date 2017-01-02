@@ -352,7 +352,36 @@ class test1_6
 		s.sop(max);
 	}
 }
-
+class QuickSort
+{
+	private int array[];
+	public QuickSort(int array[])
+	{
+		this.array=array;
+	}
+	public void Sort(int start, int end)
+	{
+		int pivot;
+		pivot=Partition(start, end);
+		Sort(start, pivot-1);
+		Sort(pivot+1, end);
+	}
+	public int Partition(int start, int end)
+	{
+		int i=0,j=0,temp=0;
+		if(start==end)
+			return start;
+		while(j<end)
+		{
+//			array[]
+		}
+		return 1;
+	}
+	public int[] getSortedArray()
+	{
+		return this.array;
+	}
+}
 class s
 {
 	public static void sop(Object o)

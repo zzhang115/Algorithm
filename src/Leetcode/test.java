@@ -1,5 +1,6 @@
 package Leetcode;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -7,9 +8,8 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		int arrayA[]={6,10,20,9,31,31,30,15,40,1,9,36,1,11,36,2,50,21};
-		QuickSort sort=new QuickSort(arrayA);
-		sort.getSortedArray();
+		new test1_7();
+
 	}
 }
 class test1_1
@@ -354,8 +354,57 @@ class test1_6
 		s.sop(max);
 	}
 }
+class test1_7
+{
+	public test1_7()
+	{
+		int array[]={-1,1,1,0,-4,2,2,3};
+		array=new QuickSort(array).getSortedArray();
+		ArrayList<String> arraylist=new ArrayList<String>();
+		for(int i=0;i<array.length;i++)
+		{
+			if(array[i]>=0)break;
+			int num,p,q;
+			if(i>0 && array[i]==array[i-1])
+				continue;
+			num=array[i];
+			p=i+1;
+			q=array.length-1;
+			while(p<q)
+			{
+				s.sop(p+" "+q);
+//				if(array[p]==array[p+1])
+//				{
+//					p++;
+//					continue;
+//				}
+//				if(array[q-1]==array[q])
+//				{
+//					q--;
+//					continue;
+//				}				
+				if((-num)>(array[p]+array[q]))
+					p++;
+				else if((-num)<(array[p]+array[q]))
+					q--;
+				else if((array[p]+array[q]+num)==0)
+				{
+					arraylist.add(num+" "+array[p]+" "+array[q]);
+					p++;
+					q--;
+				}
+
+			}
+		}
+		for(String str:arraylist)
+			s.sop(str);
+	}
+}
 class QuickSort
 {
+//	int arrayA[]={6,10,20,9,31,31,30,15,40,1,9,36,1,11,36,2,50,21};
+//	QuickSort sort=new QuickSort(arrayA);
+//	sort.getSortedArray();
 	private int array[];
 	public QuickSort(int array[])
 	{
@@ -367,17 +416,13 @@ class QuickSort
 		if(start>=end)return;
 		int pivot;
 		pivot=Partition(start, end);
-//		s.sop(start+" "+pivot+" "+end);
 		Sort(start, pivot-1);
 		Sort(pivot+1, end);
-//		getSortedArray();
+
 	}
 	public int Partition(int start, int end)
 	{
 		int i=start,j=start,temp=0;
-		if(start>=end)
-			return start;
-		s.sop(start+" "+end);
 		while(j<end)
 		{
 			if(array[i]>=array[end] && array[j]<array[end])
@@ -394,9 +439,9 @@ class QuickSort
 		temp=array[end];
 		array[end]=array[i];
 		array[i]=temp;
-		for(int index=0;index<array.length;index++)
-			s.so(array[index]+" ");
-		s.sop("");
+//		for(int index=0;index<array.length;index++)
+//			s.so(array[index]+" ");
+//		s.sop("");
 		return i;
 	}
 	public int[] getSortedArray()

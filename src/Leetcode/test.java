@@ -7,7 +7,9 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		
+		int arrayA[]={6,10,20,9,31,31,30,15,40,1,9,36,1,11,36,2,50,21};
+		QuickSort sort=new QuickSort(arrayA);
+		sort.getSortedArray();
 	}
 }
 class test1_1
@@ -358,27 +360,50 @@ class QuickSort
 	public QuickSort(int array[])
 	{
 		this.array=array;
+		Sort(0, array.length-1);
 	}
 	public void Sort(int start, int end)
 	{
+		if(start>=end)return;
 		int pivot;
 		pivot=Partition(start, end);
+//		s.sop(start+" "+pivot+" "+end);
 		Sort(start, pivot-1);
 		Sort(pivot+1, end);
+//		getSortedArray();
 	}
 	public int Partition(int start, int end)
 	{
-		int i=0,j=0,temp=0;
-		if(start==end)
+		int i=start,j=start,temp=0;
+		if(start>=end)
 			return start;
+		s.sop(start+" "+end);
 		while(j<end)
 		{
-//			array[]
+			if(array[i]>=array[end] && array[j]<array[end])
+			{
+				temp=array[i];
+				array[i]=array[j];
+				array[j]=temp;
+				i++;
+			}
+			else if(array[i]<array[end])
+				i++;
+			j++;
 		}
-		return 1;
+		temp=array[end];
+		array[end]=array[i];
+		array[i]=temp;
+		for(int index=0;index<array.length;index++)
+			s.so(array[index]+" ");
+		s.sop("");
+		return i;
 	}
 	public int[] getSortedArray()
-	{
+	{		
+		for(int i=0;i<array.length;i++)
+			s.so(array[i]+" ");
+		s.sop("");
 		return this.array;
 	}
 }
@@ -387,5 +412,9 @@ class s
 	public static void sop(Object o)
 	{
 		System.out.println(o);
+	}
+	public static void so(Object o)
+	{
+		System.out.print(o);
 	}
 }

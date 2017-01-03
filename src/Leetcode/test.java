@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
+import S.s;
+import Sort.QuickSort;
+
 public class test 
 {
 	public static void main(String[] args) 
 	{
-		new test1_7();
-
+		new test1_8(5);
 	}
 }
 class test1_1
@@ -356,9 +358,10 @@ class test1_6
 }
 class test1_7
 {
+//	new test1_7();
 	public test1_7()
 	{
-		int array[]={-1,1,1,0,-4,2,2,3};
+		int array[]={-1,1,5,1,0,-4,2,-5,2,-7,3,8};
 		array=new QuickSort(array).getSortedArray();
 		ArrayList<String> arraylist=new ArrayList<String>();
 		for(int i=0;i<array.length;i++)
@@ -373,7 +376,7 @@ class test1_7
 			while(p<q)
 			{
 				s.sop(p+" "+q);
-//				if(array[p]==array[p+1])
+//				if(array[p]==array[p+1])//get rid of duplicate elements
 //				{
 //					p++;
 //					continue;
@@ -400,66 +403,75 @@ class test1_7
 			s.sop(str);
 	}
 }
-class QuickSort
+class test1_8
 {
-//	int arrayA[]={6,10,20,9,31,31,30,15,40,1,9,36,1,11,36,2,50,21};
-//	QuickSort sort=new QuickSort(arrayA);
-//	sort.getSortedArray();
-	private int array[];
-	public QuickSort(int array[])
+//	new test1_8(5);
+	public test1_8(int givenNum)
 	{
-		this.array=array;
-		Sort(0, array.length-1);
-	}
-	public void Sort(int start, int end)
-	{
-		if(start>=end)return;
-		int pivot;
-		pivot=Partition(start, end);
-		Sort(start, pivot-1);
-		Sort(pivot+1, end);
-
-	}
-	public int Partition(int start, int end)
-	{
-		int i=start,j=start,temp=0;
-		while(j<end)
-		{
-			if(array[i]>=array[end] && array[j]<array[end])
-			{
-				temp=array[i];
-				array[i]=array[j];
-				array[j]=temp;
-				i++;
-			}
-			else if(array[i]<array[end])
-				i++;
-			j++;
-		}
-		temp=array[end];
-		array[end]=array[i];
-		array[i]=temp;
-//		for(int index=0;index<array.length;index++)
-//			s.so(array[index]+" ");
-//		s.sop("");
-		return i;
-	}
-	public int[] getSortedArray()
-	{		
+		int minDifference=65535;
+//		int array[]={-1,1,5,1,0,-4,2,-5,2,-7,3,-3,8};
+		int array[]={-1,1,25,1,0,-40,26,-105,2,-7,23,-30,8};
+		array=new QuickSort(array).getSortedArray();
+		ArrayList<String> arraylist=new ArrayList<String>();
 		for(int i=0;i<array.length;i++)
-			s.so(array[i]+" ");
-		s.sop("");
-		return this.array;
-	}
-}
-class s
-{
-	public static void sop(Object o)
-	{
-		System.out.println(o);
-	}
-	public static void so(Object o)
-	{
-		System.out.print(o);
+		{
+			int num,p,q,difference;
+			if(i>0 && array[i]==array[i-1])
+				continue;
+			num=array[i];
+			p=i+1;
+			q=array.length-1;
+			while(p<q)
+			{
+				s.sop(num+" "+array[p]+" "+array[q]);
+//				if(array[p]==array[p+1])//get rid of duplicate elements
+//				{
+//					p++;
+//					continue;
+//				}
+//				if(array[q-1]==array[q])
+//				{
+//					q--;
+//					continue;
+//				}	
+				difference=s.abs(givenNum-(array[p]+array[q]+num));
+				s.sop("difference= "+difference);
+				if(givenNum>(array[p]+array[q]+num))
+				{
+					if(difference<minDifference)
+					{
+						minDifference=difference;
+						if(!arraylist.isEmpty())
+							arraylist.remove(arraylist.size()-1);
+						arraylist.add(num+" "+array[p]+" "+array[q]);
+					}
+					p++;
+				}
+				else if(givenNum<(array[p]+array[q]+num))
+				{
+					if(difference<minDifference)
+					{
+						minDifference=difference;
+						if(!arraylist.isEmpty())
+							arraylist.remove(arraylist.size()-1);
+						arraylist.add(num+" "+array[p]+" "+array[q]);
+					}
+					q--;
+				}
+				else if(givenNum==(array[p]+array[q]+num))
+				{					
+					if(minDifference!=0)
+						arraylist.clear();
+					if(difference<minDifference)
+						minDifference=difference;
+					arraylist.add(num+" "+array[p]+" "+array[q]);
+					p++;
+					q--;
+				}
+
+			}
+		}
+		for(String str:arraylist)
+			s.sop("final: "+str);
 	}
 }

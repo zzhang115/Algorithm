@@ -11,7 +11,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_8(5);
+		new test1_12();
 	}
 }
 class test1_1
@@ -473,5 +473,52 @@ class test1_8
 		}
 		for(String str:arraylist)
 			s.sop("final: "+str);
+	}
+}
+class test1_12
+{
+	public test1_12()
+	{
+		int i,j,k,temp;
+		int array[]={1,6,5,7,6,5,4,3,2,1};
+//		int array[]={1,2,3};
+		for(i=array.length-1;i>0;i--)
+		{
+			if(array[i-1]<array[i])
+				break;
+		}
+		if(i!=0)
+		{
+			for(j=array.length-1;j>=i;j--)
+			{
+				if(array[j]>array[i-1])
+					break;
+			}
+			temp=array[i-1];
+			array[i-1]=array[j];
+			array[j]=temp;
+		}
+		k=array.length-1;
+		if((k-i+1)%2==0)
+			while((k-i)>=1)
+			{
+				temp=array[i];
+				array[i]=array[k];
+				array[k]=temp;
+				i++;k--;
+			}
+		else
+			while((k-i)>=2)
+			{
+				temp=array[i];
+				array[i]=array[k];
+				array[k]=temp;
+				i++;k--;
+			}
+		for(int x=0;x<array.length;x++)
+		{
+			s.so(array[x]+" ");
+		}
+		
 	}
 }

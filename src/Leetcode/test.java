@@ -11,7 +11,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_12();
+		new test1_13();
 	}
 }
 class test1_1
@@ -480,8 +480,8 @@ class test1_12
 	public test1_12()
 	{
 		int i,j,k,temp;
-		int array[]={1,6,5,7,6,5,4,3,2,1};
-//		int array[]={1,2,3};
+//		int array[]={1,6,5,7,6,5,4,3,2,1};
+		int array[]={1,2,3,4,6,5};
 		for(i=array.length-1;i>0;i--)
 		{
 			if(array[i-1]<array[i])
@@ -516,9 +516,69 @@ class test1_12
 				i++;k--;
 			}
 		for(int x=0;x<array.length;x++)
-		{
 			s.so(array[x]+" ");
-		}
+	}
+}
+class test1_13
+{
+	public test1_13()
+	{
+		test();
+//		for(int i=1;i<=24;i++)
+//			s.sop(getPermutation(4, i));
+	}
+	public String getPermutation(int n, int k) 
+	{ 
+	  String res=""; 
+	  int[] vis=new int[n];//mark the visit status 
+	  int[] factorial=new int[n]; 
+	  factorial[0]=1; 
+	  for(int i=1;i<n;i++)
+	  { 
+	   factorial[i]=factorial[i-1]*(i+1); 
+	  } 
+	  for(int i=0;i<n-1;i++)
+	  { 
+	   int value=(k-1)/factorial[n-i-2]+1;
+//	   s.sop("value:"+value+" ="+(k-1)+"/"+factorial[n-i-2]);
+//	   s.sop("k:"+k+"-"+(value-1)+"*"+factorial[n-i-2]);
+	   k=k-(value-1)*factorial[n-i-2];
+	   int p=0; 
+	   while(value!=0)
+	   { 
+	    if(vis[p%n]==0)
+	    { 
+	     value--; 
+	    } 
+	    p++; 
+	   } 
+	   p--; 
+	   vis[p%n]=1; 
+	   res+=(p+1); 
+	  } 
+	  for(int i=0;i<n;i++)
+	  { 
+	   if(vis[i]==0)
+	   { 
+	    res+=(i+1);
+//	    s.sop("res="+res);
+	    break; 
+	   } 
+	  } 
+	  return res; 
+	 }
+	public void test()
+	{
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		list.add(6);
+		list.add(7);
+		list.add(8);
+		list.add(9);
+		list.add(10);
+		for(int i=0;i<list.size();i++)
+			s.sop(list.get(i));
+		list.remove(2);
 		
+		s.sop(list.get(2));
 	}
 }

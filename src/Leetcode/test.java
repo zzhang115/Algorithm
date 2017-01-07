@@ -525,7 +525,7 @@ class test1_13
 	public test1_13()
 	{
 //		for(int i=1;i<=120;i++)
-			s.sop(mySolution(5, 2));
+//			s.sop(mySolution(13, i));
 //		for(int i=1;i<=24;i++)
 //			s.sop(getPermutation(4, i));
 	}
@@ -591,5 +591,12 @@ class test1_13
 			k=k-ordernum*factorial(i);
 		}
 		return str;
+	}//another c++ algorithm on that book 
+}
+class test1_14
+{
+	public test1_14()
+	{
+		
 	}
 }

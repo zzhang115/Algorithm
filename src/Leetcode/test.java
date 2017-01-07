@@ -521,9 +521,11 @@ class test1_12
 }
 class test1_13
 {
+	public ArrayList<Integer> arraylist=new ArrayList<Integer>();
 	public test1_13()
 	{
-		test();
+//		for(int i=1;i<=120;i++)
+			s.sop(mySolution(5, 2));
 //		for(int i=1;i<=24;i++)
 //			s.sop(getPermutation(4, i));
 	}
@@ -567,18 +569,27 @@ class test1_13
 	  } 
 	  return res; 
 	 }
-	public void test()
+	public int factorial(int i)
 	{
-		ArrayList<Integer> list=new ArrayList<Integer>();
-		list.add(6);
-		list.add(7);
-		list.add(8);
-		list.add(9);
-		list.add(10);
-		for(int i=0;i<list.size();i++)
-			s.sop(list.get(i));
-		list.remove(2);
-		
-		s.sop(list.get(2));
+		int totalFactoria=1;
+		for(int j=i;j>0;j--)
+			totalFactoria*=j;
+		return totalFactoria;
+	}
+	public String mySolution(int n, int k)
+	{
+		int ordernum=0;
+		String str="";
+		k=k-1;
+		for(int i=0;i<n;i++)
+			arraylist.add(i+1);
+		for(int i=n-1;i>=0;i--)
+		{
+			ordernum=k/factorial(i);
+			str+=arraylist.get(ordernum);
+			arraylist.remove(ordernum);
+			k=k-ordernum*factorial(i);
+		}
+		return str;
 	}
 }

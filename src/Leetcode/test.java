@@ -11,7 +11,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_13();
+		new test1_14();
 	}
 }
 class test1_1
@@ -597,7 +597,67 @@ class test1_14
 {
 	public test1_14()
 	{
-		
+		int array[][]=
+			{
+//				{5, 3 ,4, 6 ,7, 8 ,9, 1 ,2 },
+//				{6, 7 ,2 ,1 ,9, 5 ,3 ,4 ,8 }, 
+//				{1, 9 ,8 ,3 ,4, 2 ,5 ,6 ,7 },
+//				{8, 5 ,9 ,7 ,6, 1 ,4 ,2 ,3 },
+//				{4, 2 ,6 ,8 ,5, 3 ,7 ,9 ,1 },
+//				{7, 1, 3 ,9 ,2, 4 ,8 ,5 ,6 },
+//				{9, 6, 1 ,5 ,3, 7 ,2 ,8 ,4 },
+//				{2, 8, 7 ,4, 1, 9, 6 ,3, 5 },
+//				{3, 4, 5 ,2, 8 ,6, 1 ,7, 9 }
+				{5,3,0, 0,0,0, 0,0,0},
+				{6,0,0, 1,9,5, 0,0,0},
+				{0,9,8, 0,0,0, 0,6,0},
+				{8,0,0, 0,6,0, 0,0,3},
+				{4,0,0, 8,0,3, 0,0,1},
+				{7,0,0, 0,2,0, 0,0,6},
+				{0,6,0, 0,0,0, 2,8,0},
+				{0,0,0, 4,1,9, 0,0,5},
+				{0,0,0, 0,8,0, 0,7,9}
+			};
+		s.sop(findIfValid(array));
+	}
+	public String findIfValid(int array[][])
+	{
+		boolean ifExist[];
+		for(int i=0;i<array.length;i++)//be careful the index out of bound 
+		{
+			ifExist=new boolean[10];// at first, I give length is 9, but it should be 10
+			for(int j=0;j<array[i].length;j++)
+			{
+				if(ifExist[array[i][j]] && array[i][j]!=0)
+					return "this soduku is invalid!";
+				else
+					ifExist[array[i][j]]=true;
+			}
+			ifExist=new boolean[10];
+			for(int j=0;j<array[i].length;j++)
+			{
+				if(ifExist[array[j][i]] && array[j][i]!=0)
+					return "this soduku is invalid!";
+				else
+					ifExist[array[j][i]]=true;
+			}
+		}
+		for(int i=0;i<array.length;i+=3)
+		{
+			for(int j=0;j<array.length;j+=3)
+			{
+				ifExist=new boolean[10];
+				for(int k=i;k<i+array.length/3;k++)
+					for(int l=j;l<j+array.length/3;l++)
+					{
+						if(ifExist[array[k][l]] && array[k][l]!=0)
+							return "this soduku is invalid!";
+						else
+							ifExist[array[k][l]]=true;
+					}
+			}
+		}	
+		return "this soduku is valid";
 	}
 }
 class test1_15

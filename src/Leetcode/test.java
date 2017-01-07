@@ -11,7 +11,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_14();
+		new test1_15();
 	}
 }
 class test1_1
@@ -662,8 +662,52 @@ class test1_14
 }
 class test1_15
 {
+	private int array[]={1,0,0,1,0,2,1,0,1,3,2,1,2,1,3,0,0,1,2};
 	public test1_15()
 	{
+		int i=0,j=0,sum=0;
+		while(j<array.length-1)
+		{
+			boolean flag=false;
+			int max=0,max_index=0;
+			i=j;
+			if(array[i]==0)
+				{j++;continue;}
+			for(j++;j<array.length;j++)
+			{
+				if(array[j]>=array[i])
+				{
+					flag=true;
+					sum+=countCapacity(i,j);
+					break;
+				}
+				else
+				{
+					if(array[j]>=max)
+					{
+						max=array[j];
+						max_index=j;
+					}
+				}
+			}
+			if(!flag)
+			{
+				sum+=countCapacity(i,max_index);
+				j=max_index;
+			}
+		}
+		s.sop("total capacity="+sum);
 		
 	}
+	public int countCapacity(int start, int end)
+	{
+		int existCount=0;
+		int base=array[start]>array[end]? array[end]:array[start];
+		int interval=end-start-1;
+		for(int i=start+1;i<end;i++)
+			existCount+=array[i];
+		int sum=base*interval-existCount;
+		return sum;
+	}
+	
 }

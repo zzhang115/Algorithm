@@ -600,3 +600,10 @@ class test1_14
 		
 	}
 }
+class test1_15
+{
+	public test1_15()
+	{
+		
+	}
+}

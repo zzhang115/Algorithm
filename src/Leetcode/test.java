@@ -11,7 +11,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_15();
+		new test1_16();
 	}
 }
 class test1_1
@@ -662,8 +662,14 @@ class test1_14
 }
 class test1_15
 {
+	//new test1_15();
 	private int array[]={1,0,0,1,0,2,1,0,1,3,2,1,2,1,3,0,0,1,2};
 	public test1_15()
+	{
+//		solution1();
+		solution2();
+	}
+	public void solution1()
 	{
 		int i=0,j=0,sum=0;
 		while(j<array.length-1)
@@ -697,7 +703,6 @@ class test1_15
 			}
 		}
 		s.sop("total capacity="+sum);
-		
 	}
 	public int countCapacity(int start, int end)
 	{
@@ -709,5 +714,71 @@ class test1_15
 		int sum=base*interval-existCount;
 		return sum;
 	}
-	
+	public void solution2()
+	{
+		int max_left[]=new int[array.length];
+		int max_right[]=new int[array.length];
+		int sum[]=new int[array.length];
+		int totalSum=0;
+		for(int i=1;i<array.length;i++)
+		{
+			max_left[i]=Math.max(max_left[i-1], array[i-1]);
+			max_right[array.length-i-1]=Math.max(max_right[array.length-i], array[array.length-i]);
+		}
+		for(int i=1;i<array.length-1;i++)
+		{
+			sum[i]=(Math.min(max_left[i], max_right[i])-array[i])>0? (Math.min(max_left[i], max_right[i])-array[i]):0;
+			totalSum+=sum[i];
+		}
+		s.sop(totalSum);
+	}
+}
+class test1_16
+{
+	//new test1_16();
+	int array[][]=
+		{
+			{5,3,4,6,7,8,9,1,2},
+			{6,7,2,1,9,5,3,4,8}, 
+			{1,9,8,3,4,2,5,6,7},
+			{8,5,9,7,6,1,4,2,3},
+			{4,2,6,8,5,3,7,9,1},
+			{7,1,3,9,2,4,8,5,6},
+			{9,6,1,5,3,7,2,8,4},
+			{2,8,7,4,1,9,6,3,5},
+			{3,4,5,2,8,6,1,7,9}
+		};
+	public test1_16()
+	{ 
+		int temp=0;//be careful to the rotate way, at first, it exchange element basic diagonal line, after that, overturn the upper elements with lower elements; it can actual rotate in clockwise direction quickly
+		int num=array.length;
+		int n=array.length-1;
+		for(int i=0;i<array.length;i++)
+		{
+			num--;
+			for(int j=0;j<num;j++)
+			{
+				temp=array[i][j];
+				array[i][j]=array[n-j][n-i];
+				array[n-j][n-i]=temp;
+			}
+		}
+		for(int i=0;i<array.length/2;i++)
+		{
+			for(int j=0;j<array[i].length;j++)
+			{
+				temp=array[i][j];
+				array[i][j]=array[n-i][j];
+				array[n-i][j]=temp;
+			}
+		}
+		for(int i=0;i<array.length;i++)
+		{
+			for(int j=0;j<array[i].length;j++)
+			{
+				s.so(array[i][j]+" ");
+			}
+			s.sop("");
+		}
+	}
 }

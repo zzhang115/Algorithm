@@ -11,7 +11,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_16();
+		new test1_17();
 	}
 }
 class test1_1
@@ -780,5 +780,39 @@ class test1_16
 			}
 			s.sop("");
 		}
+	}
+}
+class test1_17
+{
+	public test1_17()
+	{
+//		int array[]={3,2,3,4,6,7,9,9};
+		int array[]={9,9,9,9,9,9,9,9};
+		for(int i=0;i<array.length;i++)
+			s.so(array[i]);
+		s.sop("");
+		int plusoneArray[]=plusOne(array, 1);
+		for(int i=0;i<plusoneArray.length;i++)
+			s.so(plusoneArray[i]);
+	}
+	public int[] plusOne(int array[], int digit)
+	{
+		int addValue=digit;
+		int finalarray[]=null;
+		for(int i=array.length-1;i>=0;i--)
+		{
+			array[i]+=addValue;
+			addValue=array[i]/10;
+			array[i]%=10;
+		}
+		if(addValue>0)
+		{
+			finalarray=new int[array.length+1];
+			for(int i=0;i<array.length;i++)
+				finalarray[i+1]=array[i];
+			finalarray[0]=addValue;
+			return finalarray;
+		}
+		return array;
 	}
 }

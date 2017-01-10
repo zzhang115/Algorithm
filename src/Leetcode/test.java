@@ -11,7 +11,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_17();
+		new test1_18();
 	}
 }
 class test1_1
@@ -815,4 +815,55 @@ class test1_17
 		}
 		return array;
 	}
+}
+class test1_18
+{
+	public test1_18()
+	{
+		s.sop(ClimbStair(20));
+		s.sop(Integer.SIZE);//byte 8, short 16, char 16, int 32, long 64, float 32, double 64
+		s.sop(FibonacciSolution(21));
+		s.sop(climbStairs(20));
+	}
+	public int ClimbStair(int n)
+	{
+		int pre_pre=0, pre=1, cur=1;
+		for(int i=2;i<=n;i++)
+		{
+			pre_pre=pre;
+			pre=cur;
+			cur=pre_pre+pre;
+		}
+		return cur;
+	}
+
+	public double FibonacciSolution(int n)//this parameter is from 0, fibonacci array for example:1, 1, 2, 3, 5, 8, 9 
+	{
+		double para1=Math.sqrt(5);
+		s.sop("para1="+para1);
+		double sum=(Math.pow((1+para1)/2, n)-(Math.pow((1-para1)/2, n)))/para1;
+		
+		return sum;
+	}
+    public int climbStairs(int n) { 
+
+        if(n<=2) 
+
+            return n; 
+
+        int[] array=new int[n+1]; 
+
+        array[1]=1; 
+
+        array[2]=2; 
+
+        for(int i=3;i<=n;i++){ 
+
+            array[i]=array[i-1]+array[i-2]; 
+
+        } 
+
+        return array[n]; 
+
+    } 
 }

@@ -823,11 +823,12 @@ class test1_18
 		s.sop(ClimbStair(20));
 		s.sop(Integer.SIZE);//byte 8, short 16, char 16, int 32, long 64, float 32, double 64
 		s.sop(FibonacciSolution(21));
-		s.sop(climbStairs(20));
 	}
 	public int ClimbStair(int n)
 	{
 		int pre_pre=0, pre=1, cur=1;
+		if(n==1)
+			return 1;
 		for(int i=2;i<=n;i++)
 		{
 			pre_pre=pre;
@@ -845,25 +846,11 @@ class test1_18
 		
 		return sum;
 	}
-    public int climbStairs(int n) { 
-
-        if(n<=2) 
-
-            return n; 
-
-        int[] array=new int[n+1]; 
-
-        array[1]=1; 
-
-        array[2]=2; 
-
-        for(int i=3;i<=n;i++){ 
-
-            array[i]=array[i-1]+array[i-2]; 
-
-        } 
-
-        return array[n]; 
-
-    } 
+}
+class test1_19
+{
+	public test1_19()
+	{
+		
+	}
 }

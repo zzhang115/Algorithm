@@ -11,7 +11,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_18();
+		new test1_19();
 	}
 }
 class test1_1
@@ -851,6 +851,68 @@ class test1_19
 {
 	public test1_19()
 	{
+		solution1(5);
+		solution2(5);
+	}
+	public void solution1(int n)
+	{
+		int array[]=recurrsion(n);
+		for(int i=0;i<array.length;i++)
+			s.sop(Integer.toBinaryString(array[i]));
+	}
+	public void solution2(int n)
+	{
+		int size=(int)Math.pow(2, n);
+		int array[]=new int[size];
+		for(int i=0;i<size;i++)
+			{
+				array[i]=i^(i>>1);
+				s.sop(Integer.toBinaryString(array[i]));
+			}
+	}
+	public int[] recurrsion(int num)
+	{
+		if(num==0)return null;
+		int array0[]=new int[(int)Math.pow(2, num)];
+		int temp=(int)Math.pow(2, num-1);
+		if(num==1)
+		{
+			array0[0]=0;
+			array0[1]=1;
+			return array0;
+		}
+		int[] array1=recurrsion(num-1);
+		for(int i=0;i<array1.length;i++)
+			array0[i]=array1[i];
+		for(int i=array1.length;i<array0.length;i++)
+		{
+			array0[i]=array1[array0.length-i-1] | temp;
+		}
+		return array0;
+	}
+}
+class test1_21
+{
+	public test1_21()
+	{
 		
+	}
+	public int bookSolution()
+	{
+		int gas[]=new int[6];
+		int cost[]=new int[6];
+		int total=0;
+		int j=-1;
+		for(int i=0,sum=0;i<gas.length;i++)
+		{
+			sum+=gas[i]-cost[i];
+			total+=gas[i]-cost[i];
+			if(sum<0)
+			{
+				j=i;
+				sum=0;
+			}
+		}
+		return total>0? j+1:-1;
 	}
 }

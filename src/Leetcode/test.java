@@ -11,7 +11,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_19();
+		new test1_21();
 	}
 }
 class test1_1
@@ -891,16 +891,23 @@ class test1_19
 		return array0;
 	}
 }
+class test1_20
+{
+	public test1_20()
+	{
+		
+	}
+}
 class test1_21
 {
 	public test1_21()
 	{
-		
+		s.sop(bookSolution());
 	}
 	public int bookSolution()
 	{
-		int gas[]=new int[6];
-		int cost[]=new int[6];
+		int gas[]={3,6,2,2,4,1};
+		int cost[]={4,1,3,4,2,4};
 		int total=0;
 		int j=-1;
 		for(int i=0,sum=0;i<gas.length;i++)
@@ -913,6 +920,6 @@ class test1_21
 				sum=0;
 			}
 		}
-		return total>0? j+1:-1;
+		return total>=0? j+1:-1;
 	}
 }

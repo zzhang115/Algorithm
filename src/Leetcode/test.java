@@ -11,7 +11,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_20();
+		new test1_21();
 	}
 }
 class test1_1
@@ -970,16 +970,17 @@ class test1_21
 	{
 		int gas[]={3,6,2,2,4,1};
 		int cost[]={4,1,3,4,2,4};
+		int sum=0;
 		int total=0;
 		int j=-1;
-		for(int i=0,sum=0;i<gas.length;i++)
+		for(int i=0;i<gas.length;i++)
 		{
 			sum+=gas[i]-cost[i];
 			total+=gas[i]-cost[i];
 			if(sum<0)
 			{
-				j=i;
 				sum=0;
+				j=i;
 			}
 		}
 		return total>=0? j+1:-1;

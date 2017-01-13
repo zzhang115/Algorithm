@@ -11,7 +11,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_21();
+		new test1_22();
 	}
 }
 class test1_1
@@ -984,5 +984,27 @@ class test1_21
 			}
 		}
 		return total>=0? j+1:-1;
+	}
+}
+class test1_22
+{
+	int candy[]=new int[8];
+	int rating[]={5,4,3,1,2,5,4,6};
+	public test1_22()
+	{
+		for(int i=0;i<candy.length;i++)
+			candy[i]=1;
+		for(int i=1;i<rating.length;i++)
+		{
+			if(rating[i-1]<rating[i])
+				candy[i]=candy[i-1]+1;
+		}
+		for(int i=rating.length-2;i>=0;i--)
+		{
+			if(rating[i]>rating[i+1] && candy[i]<=candy[i+1])
+				candy[i]=candy[i+1]+1;
+		}
+		for(int i=0;i<candy.length;i++)
+			s.so(candy[i]+" ");
 	}
 }

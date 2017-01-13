@@ -856,7 +856,7 @@ class test1_19
 	}
 	public void solution1(int n)
 	{
-		int array[]=recurrsion(n);
+		int array[]=recursion(n);
 		for(int i=0;i<array.length;i++)
 			s.sop(Integer.toBinaryString(array[i]));
 	}
@@ -870,7 +870,7 @@ class test1_19
 				s.sop(Integer.toBinaryString(array[i]));
 			}
 	}
-	public int[] recurrsion(int num)
+	public int[] recursion(int num)
 	{
 		if(num==0)return null;
 		int array0[]=new int[(int)Math.pow(2, num)];
@@ -881,7 +881,7 @@ class test1_19
 			array0[1]=1;
 			return array0;
 		}
-		int[] array1=recurrsion(num-1);
+		int[] array1=recursion(num-1);
 		for(int i=0;i<array1.length;i++)
 			array0[i]=array1[i];
 		for(int i=array1.length;i<array0.length;i++)
@@ -992,6 +992,10 @@ class test1_22
 	int rating[]={5,4,3,1,2,5,4,6};
 	public test1_22()
 	{
+
+	}
+	public void solution1()
+	{
 		for(int i=0;i<candy.length;i++)
 			candy[i]=1;
 		for(int i=1;i<rating.length;i++)
@@ -1006,5 +1010,13 @@ class test1_22
 		}
 		for(int i=0;i<candy.length;i++)
 			s.so(candy[i]+" ");
+	}
+	public void solution2()//Recursion
+	{
+		
+	}
+	public int giveCandy()
+	{
+		return 1;
 	}
 }

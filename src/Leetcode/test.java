@@ -11,7 +11,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_21();
+		new test1_20();
 	}
 }
 class test1_1
@@ -893,9 +893,71 @@ class test1_19
 }
 class test1_20
 {
+	int array[][]=
+	{
+		{5,3,0,6,7,8,0,1,2},
+		{6,7,2,1,9,5,3,4,8}, 
+		{1,9,8,3,0,2,5,6,7},
+		{7,1,3,9,2,4,8,5,6},
+		{9,6,1,0,3,7,2,8,4},
+		{2,8,7,4,1,9,6,3,5},
+		{3,4,5,2,8,6,0,7,9}		
+	};
 	public test1_20()
 	{
+		boolean col = false,row = false;
+		for(int i=0;i<array.length;i++)
+		{
+			if(array[i][0]==0)
+			{
+				col=true;
+				break;
+			}
+		}
+		for(int j=0;j<array[0].length;j++)
+		{
+			if(array[0][j]==0)
+			{
+				row=true;
+				break;
+			}
+		}
+		for(int i=1;i<array.length;i++)
+		{
+			for(int j=1;j<array[i].length;j++)
+			{
+				if(array[i][j]==0)
+				{
+					array[0][j]=0;
+					array[i][0]=0;
+				}
+			}
+		}
+		for(int i=1;i<array.length;i++)
+		{
+			for(int j=1;j<array[i].length;j++)
+			{
+				if(array[i][0]==0 || array[0][j]==0)
+					array[i][j]=0;
+			}
+		}
+		if(col)
+		{
+			for(int i=0;i<array.length;i++)
+				array[i][0]=0;
+		}
+		if(row)
+		{
+			for(int j=0;j<array[0].length;j++)
+				array[0][j]=0;
+		}
 		
+		for(int i=0;i<array.length;i++)
+		{
+			for(int j=0;j<array[i].length;j++)
+				s.so(array[i][j]+" ");
+			s.sop("");
+		}
 	}
 }
 class test1_21

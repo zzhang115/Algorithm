@@ -988,11 +988,17 @@ class test1_21
 }
 class test1_22
 {
-	int candy[]=new int[8];
-	int rating[]={5,4,3,1,2,5,4,6};
+	int index=0;
+	int pos=0;
+	int candy[]=new int[7];
+//	int rating[]={6,5,1,2,3,5,4,3,1,2,5,4,6};
+//	int rating[]={1,2,3,4,5,6,7,8,9};
+	int rating[]={3,1,3,4,2,1,4};
+//	int rating[]={5,4,3,1,2,5,4,6};
 	public test1_22()
 	{
-
+		solution2();
+		
 	}
 	public void solution1()
 	{
@@ -1011,12 +1017,50 @@ class test1_22
 		for(int i=0;i<candy.length;i++)
 			s.so(candy[i]+" ");
 	}
-	public void solution2()//Recursion
+	public void solution2()//Recursion too complicated, it should be easier than solution2
 	{
-		
+		boolean flag=true;
+		for(int i=0;i<candy.length;i++)
+			candy[i]=1;
+		while(index<rating.length-1)
+		{
+			candy[index]=giveCandy(index, 1, flag);
+			index=pos;
+			s.sop("1 "+index);
+		}
+		flag=true;
+		while(index>0)
+		{
+			candy[index]=giveCandy(index, -1, flag);
+			index=pos;
+			s.sop("2");
+		}
+		for(int i=0;i<candy.length;i++)
+			s.so(candy[i]+" ");
 	}
-	public int giveCandy()
+	public int giveCandy(int index, int dir, boolean flag)
 	{
-		return 1;
+		if((index>=rating.length-1 || index<=0))
+		{
+			if(flag)
+				flag=false;
+			else
+			{
+				this.pos=index;
+				return 1;
+			}
+		}
+		if(rating[index]>rating[index+dir])
+		{
+			candy[index]=giveCandy(index+dir, dir, flag)+1;
+			return candy[index];
+		}
+		else
+		{
+			this.pos=index+dir;
+			if(candy[index]>1)
+				return candy[index];
+			return 1;
+		}
 	}
 }

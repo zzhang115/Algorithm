@@ -11,7 +11,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_22();
+		new test1_23();
 	}
 }
 class test1_1
@@ -1026,14 +1026,12 @@ class test1_22
 		{
 			candy[index]=giveCandy(index, 1, flag);
 			index=pos;
-			s.sop("1 "+index);
 		}
 		flag=true;
 		while(index>0)
 		{
 			candy[index]=giveCandy(index, -1, flag);
 			index=pos;
-			s.sop("2");
 		}
 		for(int i=0;i<candy.length;i++)
 			s.so(candy[i]+" ");
@@ -1062,5 +1060,22 @@ class test1_22
 				return candy[index];
 			return 1;
 		}
+	}
+	public void solution3()
+	{
+		
+	}
+}
+class test1_23
+{
+	int array[]={2,1,1,3,2,3,4,4,5}; 
+	public test1_23()
+	{
+		int temp=0;
+		for(int i=0;i<array.length;i++)
+		{
+			temp^=array[i];
+		}
+		s.sop(temp);
 	}
 }

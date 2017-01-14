@@ -11,7 +11,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_23();
+		new test1_24();
 	}
 }
 class test1_1
@@ -1077,5 +1077,26 @@ class test1_23
 			temp^=array[i];
 		}
 		s.sop(temp);
+	}
+}
+class test1_24
+{
+	int array[]={2,2,1,1,1,3,2,3,4,4,4,5,5,5}; 
+	public test1_24()
+	{
+		s.sop(Integer.toBinaryString(Integer.MAX_VALUE)+"\n"+Integer.toBinaryString(Integer.MIN_VALUE));
+		int count[]=new int[Integer.SIZE];
+		int result=0;
+		for(int i=0;i<array.length;i++)
+			for(int j=0;j<count.length;j++)
+			{
+				count[j]+=array[i]>>j & 1;
+			}
+		for(int j=0;j<count.length;j++)
+		{
+			count[j]%=3;
+			result+=count[j]<<j;
+		}
+		s.sop(result);
 	}
 }

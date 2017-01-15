@@ -11,7 +11,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_24();
+		new test1_22();
 	}
 }
 class test1_1
@@ -990,15 +990,14 @@ class test1_22
 {
 	int index=0;
 	int pos=0;
-	int candy[]=new int[7];
-//	int rating[]={6,5,1,2,3,5,4,3,1,2,5,4,6};
+	int candy[]=new int[13];
+	int rating[]={6,5,1,2,3,5,4,3,1,2,5,4,6};
 //	int rating[]={1,2,3,4,5,6,7,8,9};
-	int rating[]={3,1,3,4,2,1,4};
+//	int rating[]={3,1,3,4,2,1,4};
 //	int rating[]={5,4,3,1,2,5,4,6};
 	public test1_22()
 	{
 		solution2();
-		
 	}
 	public void solution1()
 	{
@@ -1063,7 +1062,20 @@ class test1_22
 	}
 	public void solution3()
 	{
-		
+		for(int i=0;i<rating.length;i++)
+		{
+			candy[i]=handCandy(i);
+			s.so(candy[i]+" ");
+		}
+	}
+	public int handCandy(int i)
+	{
+		candy[i]=1;
+		if(i<rating.length-1 && rating[i]>rating[i+1])
+			candy[i]=handCandy(i+1)+1;
+		if(i>0 && rating[i]>rating[i-1])
+			candy[i]=handCandy(i-1)+1;
+		return candy[i];
 	}
 }
 class test1_23
@@ -1081,15 +1093,17 @@ class test1_23
 }
 class test1_24
 {
-	int array[]={2,2,1,1,1,3,2,3,4,4,4,5,5,5}; 
+	int array[]={2,2,1,1,1,Integer.MAX_VALUE,2,4,4,4,5,5,5}; 
 	public test1_24()
 	{
 		s.sop(Integer.toBinaryString(Integer.MAX_VALUE)+"\n"+Integer.toBinaryString(Integer.MIN_VALUE));
+		s.sop(Integer.MAX_VALUE+" "+Integer.MIN_VALUE);
 		int count[]=new int[Integer.SIZE];
 		int result=0;
 		for(int i=0;i<array.length;i++)
 			for(int j=0;j<count.length;j++)
 			{
+				s.so(j+" ");
 				count[j]+=array[i]>>j & 1;
 			}
 		for(int j=0;j<count.length;j++)
@@ -1098,5 +1112,8 @@ class test1_24
 			result+=count[j]<<j;
 		}
 		s.sop(result);
+		int i=1;
+		i=i<<31;
+		s.sop(i);
 	}
 }

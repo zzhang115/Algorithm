@@ -11,7 +11,7 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_22();
+		new test1_24();
 	}
 }
 class test1_1
@@ -1094,10 +1094,15 @@ class test1_23
 class test1_24
 {
 	int array[]={2,2,1,1,1,Integer.MAX_VALUE,2,4,4,4,5,5,5}; 
+//	int array[]={1,3,3,3};
 	public test1_24()
 	{
-		s.sop(Integer.toBinaryString(Integer.MAX_VALUE)+"\n"+Integer.toBinaryString(Integer.MIN_VALUE));
-		s.sop(Integer.MAX_VALUE+" "+Integer.MIN_VALUE);
+		solution2();
+	}
+	public void solution1()
+	{
+		s.sop(Integer.toBinaryString(Integer.MAX_VALUE)+"\n"+Integer.toBinaryString(-2));
+		s.sop(Integer.MAX_VALUE+2+" "+Integer.MIN_VALUE);
 		int count[]=new int[Integer.SIZE];
 		int result=0;
 		for(int i=0;i<array.length;i++)
@@ -1112,8 +1117,19 @@ class test1_24
 			result+=count[j]<<j;
 		}
 		s.sop(result);
-		int i=1;
-		i=i<<31;
-		s.sop(i);
+	}
+	public void solution2()
+	{
+		int one=0,two=0,mid=0;
+		for(int i=0;i<array.length;i++)
+		{
+			two=two|(one&array[i]);
+			one=one^array[i];
+			mid=one^two;
+			one=one&mid;
+			two=two&mid;
+		}
+		int result=one|two;
+		s.sop(result);
 	}
 }

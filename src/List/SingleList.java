@@ -1,10 +1,5 @@
 package List;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-
 import S.s;
 
 public class SingleList
@@ -23,16 +18,24 @@ public class SingleList
 		if(size<index || index<0)
 			{s.sop("parameter is invalid!");return;}
 		int i=0;
+		current=head.next;
 		while(i<index && current!=null)
 		{
-			current=current.getNext();
+			current=current.next;
 			i++;
 		}
 	}
 	public void add(int index, int data)
 	{
-		
-		SingleNode node=new SingleNode(data, null);
+		if(size<index || index<0)
+			{s.sop("parameter is invalid!");return;}
+		indexAdjust(index-1);
+		current.next=new SingleNode(data, current.next);
 		size++;
+	}
+	public Object getNode(int index)
+	{
+		indexAdjust(index);
+		return current.getData();
 	}
 }

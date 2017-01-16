@@ -14,9 +14,9 @@ public class SingleNode
 		this.data=data;
 		this.next=next;
 	}
-	public SingleNode getNext()
+	public Object getData()
 	{
-		return this.next;
+		return this.data;
 	}
 	public void setNext(SingleNode node)
 	{

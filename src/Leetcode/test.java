@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
+import List.SingleNode;
 import S.s;
 import Sort.QuickSort;
 
@@ -1131,5 +1132,20 @@ class test1_24
 		}
 		int result=one|two;
 		s.sop(result);
+	}
+}
+class test2_1
+{
+	public test2_1()
+	{
+//		SingleNode node1=new SingleNode();
+//		SingleNode node2=new SingleNode();
+//		SingleNode node3=new SingleNode();
+//		SingleNode node4=new SingleNode();
+//		node1.next=node2;
+//		node2.next=node3;
+//		node3.next=node4;
+		
+		
 	}
 }

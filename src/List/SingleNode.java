@@ -9,7 +9,7 @@ public class SingleNode
 	{
 		this.next=next;
 	}
-	public SingleNode(int data, SingleNode next)
+	public SingleNode(Object data, SingleNode next)
 	{
 		this.data=data;
 		this.next=next;
@@ -18,13 +18,4 @@ public class SingleNode
 	{
 		return this.data;
 	}
-	public void setNext(SingleNode node)
-	{
-		this.next=node;
-	}
-	public String display()
-	{
-		return this.data+" ";
-	}
-	
 }

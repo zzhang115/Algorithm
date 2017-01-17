@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
+import List.LinkList;
+import List.SingleList;
 import List.SingleNode;
 import S.s;
 import Sort.QuickSort;
@@ -12,7 +14,14 @@ public class test
 {
 	public static void main(String[] args) 
 	{
-		new test1_24();
+		try
+		{
+			new test2_1();
+		} catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
 class test1_1
@@ -1136,16 +1145,30 @@ class test1_24
 }
 class test2_1
 {
-	public test2_1()
+	public test2_1() throws Exception
 	{
-//		SingleNode node1=new SingleNode();
-//		SingleNode node2=new SingleNode();
-//		SingleNode node3=new SingleNode();
-//		SingleNode node4=new SingleNode();
-//		node1.next=node2;
-//		node2.next=node3;
-//		node3.next=node4;
+//		LinkList list=new LinkList();
+		SingleList list=new SingleList();
+//		list.insert(0, "a");
+//		list.insert(1, "b");
+//		list.insert(2, "c");
+//		list.insert(3, "d");
+//		list.insert(4, "e");
+		list.add(0, "a");
+		list.add(1, "b");
+		list.add(2, "c");
+		list.add(3, "d");
+		list.add(4, "e");
 		
-		
+		for(int i=0;i<list.size();i++)
+		{
+			try
+			{
+				s.sop(list.getNode(i));
+			} catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
 	}
 }

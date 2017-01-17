@@ -53,7 +53,18 @@ public class SingleList
 		current.next=end;
 		size--;
 	}
-	public Object getNode(int index)
+	public SingleNode getNode(int index)
+	{
+        if(index <-1 || index >size-1)
+        {
+            s.sop("parameter is invalid");
+        }
+        if(index==-1)
+        	return head;
+		indexAdjust(index);
+		return current;
+	}
+	public Object getNodeData(int index)
 	{
         if(index <-1 || index >size-1)
         {

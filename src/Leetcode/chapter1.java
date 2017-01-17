@@ -3,10 +3,6 @@ package Leetcode;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
-
-import List.LinkList;
-import List.SingleList;
-import List.SingleNode;
 import S.s;
 import Sort.QuickSort;
 
@@ -14,14 +10,6 @@ public class chapter1
 {
 	public static void main(String[] args) 
 	{
-		try
-		{
-			new test2_1();
-		} catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }
 class test1_1

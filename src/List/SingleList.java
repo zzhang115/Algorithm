@@ -11,7 +11,6 @@ public class SingleList
 	{
 		size=0;
 		current=head=new SingleNode(null);
-		
 	}
 	public void indexAdjust(int index)
 	{
@@ -30,10 +29,29 @@ public class SingleList
 	{
 		if(size<index || index<0)
 			{s.sop("parameter is invalid!");return;}
+		if(index==0)
+			current=head;
 		indexAdjust(index-1);
-//		s.sop(current.next);
-		current.next=new SingleNode(data, current.next);
+		SingleNode newnode=new SingleNode(data, current.next);
+		SingleNode end;
+		end=current.next;
+		current.next=newnode;
+		newnode.next=end;
 		size++;
+	}
+	public void delete(int index)
+	{
+		s.sop("current "+current.getData());
+		if(index > size-1 || index<0)
+			{s.sop("parameter is invalid!");return;}
+		if(index==0)
+			current=head;
+		indexAdjust(index-1);
+		SingleNode mid,end;
+		mid=current.next;
+		end=mid.next;
+		current.next=end;
+		size--;
 	}
 	public Object getNode(int index)
 	{

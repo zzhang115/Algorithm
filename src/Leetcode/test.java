@@ -1147,24 +1147,30 @@ class test2_1
 {
 	public test2_1() throws Exception
 	{
-//		LinkList list=new LinkList();
 		SingleList list=new SingleList();
-//		list.insert(0, "a");
-//		list.insert(1, "b");
-//		list.insert(2, "c");
-//		list.insert(3, "d");
-//		list.insert(4, "e");
 		list.add(0, "a");
 		list.add(1, "b");
 		list.add(2, "c");
 		list.add(3, "d");
 		list.add(4, "e");
-		
 		for(int i=0;i<list.size();i++)
 		{
 			try
 			{
-				s.sop(list.getNode(i));
+				s.so(list.getNode(i)+" ");
+			} catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		s.sop("");
+		list.add(0, "f");
+//		list.delete(4);
+		for(int i=0;i<list.size();i++)
+		{
+			try
+			{
+				s.so(list.getNode(i)+" ");
 			} catch (Exception e)
 			{
 				e.printStackTrace();
